@@ -1,5 +1,4 @@
 #include "mnist.h"
-#include "model.h"
 
 #include <torch/torch.h>
 
@@ -88,7 +87,7 @@ auto main(int argc, const char* argv[]) -> int {
 			options.data_root, torch::data::datasets::MNIST::Mode::kTrain)
 		.map(Normalize(0.1307, 0.3081))
 		.map(torch::data::transforms::Stack<>());
-	const auto dataset_size = train_dataset.size();
+	const auto dataset_size = train_dataset.size().value();
 
 	auto train_loader = torch::data::make_data_loader(
 		std::move(train_dataset), options.batch_size);
@@ -106,7 +105,9 @@ auto main(int argc, const char* argv[]) -> int {
 
 	for (size_t epoch = 1; epoch <= options.epochs; ++epoch) {
 		train(
-			epoch, options, model, device, *train_loader, optimizer, dataset_size.value());
-		test(model, device, *test_loader, dataset_size.value());
+			epoch, options, model, device, *train_loader, optimizer, dataset_size);
+		test(model, device, *test_loader, dataset_size);
 	}
+
+    return 0;
 }
