@@ -1,11 +1,11 @@
-#include "mnist.h"
-
 #include <torch/torch.h>
 
 #include <cstddef>
 #include <iostream>
 #include <string>
 #include <vector>
+
+#include "mnist.h"
 
 
 template <typename DataLoader>
