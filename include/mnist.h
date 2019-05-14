@@ -6,7 +6,7 @@
 #include <vector>
 
 struct Options {
-	std::string data_root{ "../data/mnist" };
+	std::string data_root{ "./data/mnist" };
 	int32_t batch_size{ 64 };
 	int32_t epochs{ 10 };
 	double lr{ 0.01 };
