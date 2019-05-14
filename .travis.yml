@@ -50,7 +50,5 @@ before_install:
 
 # Build steps
 script:
-  - mkdir build
-  - cd build
-  - cmake -DCMAKE_CXX_COMPILER=$COMPILER ..
-  - make -j8
+  - ./build_dependencies.h
+  - ./build.sh
