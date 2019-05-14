@@ -50,5 +50,5 @@ before_install:
 
 # Build steps
 script:
-  - ./build_dependencies.h
+  - ./build_dependencies.sh
   - ./build.sh
